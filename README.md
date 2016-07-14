@@ -1,3 +1,2 @@
-# Pokedex
-Detailed pokedex
-in progress
+#Pokedex
+In depth pokedex in progess
