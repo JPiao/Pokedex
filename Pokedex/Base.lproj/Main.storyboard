@@ -9,6 +9,9 @@
         <mutableArray key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </mutableArray>
+        <mutableArray key="Pokemon Solid.ttf">
+            <string>PokemonSolidNormal</string>
+        </mutableArray>
     </customFonts>
     <scenes>
         <!--View Controller-->
@@ -25,10 +28,37 @@
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3qP-Vv-iUr">
                                 <rect key="frame" x="0.0" y="-2" width="600" height="84"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tqf-hb-hhK">
+                                        <rect key="frame" x="211" y="8" width="179" height="68"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="179" id="Cb0-yX-cNs"/>
+                                            <constraint firstAttribute="height" constant="68" id="jIN-VI-2Rz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="34"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdB-v7-FcH">
+                                        <rect key="frame" x="547" y="31" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="JYK-33-xyI"/>
+                                            <constraint firstAttribute="width" constant="45" id="Y5R-q7-PBS"/>
+                                        </constraints>
+                                        <state key="normal" image="music"/>
+                                        <connections>
+                                            <action selector="btnPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dKv-4S-Bpw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.34509803921568627" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.1345604628" blue="0.075917162410000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="2ww-XR-z6w"/>
+                                    <constraint firstItem="Tqf-hb-hhK" firstAttribute="top" secondItem="3qP-Vv-iUr" secondAttribute="top" constant="8" id="XFX-ds-xli"/>
+                                    <constraint firstAttribute="trailing" secondItem="LdB-v7-FcH" secondAttribute="trailing" constant="8" id="Z9I-cc-wOe"/>
+                                    <constraint firstItem="Tqf-hb-hhK" firstAttribute="centerX" secondItem="3qP-Vv-iUr" secondAttribute="centerX" id="bm3-f0-dyl"/>
+                                    <constraint firstAttribute="bottom" secondItem="LdB-v7-FcH" secondAttribute="bottom" constant="8" id="if4-C3-UuP"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="fXG-wq-wEN">
@@ -122,5 +152,6 @@
     <resources>
         <image name="101" width="120" height="120"/>
         <image name="bg" width="1920" height="1200"/>
+        <image name="music" width="100" height="100"/>
     </resources>
 </document>
