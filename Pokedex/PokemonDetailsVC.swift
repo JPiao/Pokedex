@@ -10,6 +10,9 @@ import UIKit
 
 class PokemonDetailsVC: UIViewController {
     
+    @IBOutlet weak var movesLbl: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var mainImg: UIImageView!
     @IBOutlet weak var pokemonDesc: UILabel!
@@ -28,21 +31,25 @@ class PokemonDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         let img = UIImage(named: "\(pokemon.pokeId)")
         nameLbl.text = pokemon.name.capitalizedString
         mainImg.image = img
         baseEvolutionImg.image = img
         
-        
+        pokemon.downloadMoves { 
+            
+        }
         pokemon.downloadPokeDetails {
-            self.updateUI()
+            self.updateBioUI()
             
         }
     }
 
-    func updateUI() {
+
+    func updateBioUI() {
         
-        nameLbl.text = pokemon.name
         pokemonDesc.text = pokemon.pokeDesc
         typeLbl.text = pokemon.type
         defenseLbl.text = pokemon.defense
@@ -53,9 +60,11 @@ class PokemonDetailsVC: UIViewController {
         
         if pokemon.nextEvoId == "" {
             nextEvolutionImg.hidden = true
+            baseEvolutionImg.hidden = false
             evolutionLbl.text = "NO EVOLUTION"
         } else {
             nextEvolutionImg.hidden = false
+            baseEvolutionImg.hidden = false
             nextEvolutionImg.image = UIImage(named: "\(pokemon.nextEvoId)")
             evolutionLbl.text = "Next Evolution: \(pokemon.nextEvolutionTxt)"
         }
@@ -65,5 +74,21 @@ class PokemonDetailsVC: UIViewController {
     @IBAction func backBtnPress(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+
+    @IBAction func segmentChange(sender: AnyObject) {
+        if segmentedControl.selectedSegmentIndex == 1 {
+            evolutionLbl.text = "Moves"
+            baseEvolutionImg.hidden = true
+            nextEvolutionImg.hidden = true
+            movesLbl.hidden = false
+            movesLbl.text = pokemon.moves
+        }
+            
+        else {
+            movesLbl.hidden = true
+            updateBioUI()
+        }
+    }
+
 
 }

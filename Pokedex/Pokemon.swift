@@ -22,6 +22,7 @@ class Pokemon {
     private var _nextEvolutionTxt: String!
     private var _pokeURL: String!
     private var _nextEvoId: String!
+    private var _moves: String!
     
     var name: String {
         return _name
@@ -95,12 +96,54 @@ class Pokemon {
         return _nextEvoId
     }
     
+    var moves: String {
+        if _moves == nil {
+            _moves = ""
+        }
+        return _moves
+    }
+    
     init(name: String, pokeId: Int) {
         
         self._name = name
         self._pokeId = pokeId
         
         _pokeURL = "\(URL_BASE)\(POKE_URL)\(_pokeId)/"
+    }
+    
+    func downloadMoves(completed: DLComplete) {
+        let url = NSURL(string: _pokeURL)!
+        
+        Alamofire.request(.GET, url).responseJSON { response in
+            
+            var str: String!
+            
+            let result = response.result
+            if let dict = result.value as? Dictionary<String, AnyObject> {
+                if let moves = dict["moves"] as? [Dictionary<String, AnyObject>] where moves.count > 0 {
+                    if let move = moves[0]["name"] as? String {
+                        str = move
+                        
+                    }
+                    
+                    if moves.count > 1  {
+                        for x in 1 ..< moves.count {
+                            str! += ", \(moves[x]["name"])"
+                            let str1 = str!.stringByReplacingOccurrencesOfString("Optional", withString: "")
+                            let str2 = str1.stringByReplacingOccurrencesOfString("(", withString: "")
+                            let str3 = str2.stringByReplacingOccurrencesOfString(")", withString: "")
+                            self._moves = str3
+
+
+                        }
+                        print(self._moves)
+                    }
+                    
+                    
+                }
+            }
+        }
+
     }
     
     func downloadPokeDetails(completed: DLComplete) {
@@ -132,6 +175,9 @@ class Pokemon {
                 print(self._height)
                 print(self._attack)
                 print(self._defense)
+                
+                
+
                 
                 if let types = dict["types"] as? [Dictionary<String, String>] where types.count > 0 {
                     
@@ -180,7 +226,7 @@ class Pokemon {
                 }
                 
                 
-                if let evolutions = dict["evolutions"] as? [Dictionary<String,AnyObject>] where evolutions.count > 0{
+                if let evolutions = dict["evolutions"] as? [Dictionary<String,AnyObject>] where evolutions.count > 0 {
                     
                     if let to = evolutions[0]["to"] as? String {
                         
@@ -207,7 +253,10 @@ class Pokemon {
                         
                     }
                     
+                    
                 }
+
+                
             }
             
         }
