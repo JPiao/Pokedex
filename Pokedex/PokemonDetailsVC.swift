@@ -12,7 +12,6 @@ class PokemonDetailsVC: UIViewController {
     
     @IBOutlet weak var movesLbl: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var mainImg: UIImageView!
     @IBOutlet weak var pokemonDesc: UILabel!
@@ -31,8 +30,6 @@ class PokemonDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
         let img = UIImage(named: "\(pokemon.pokeId)")
         nameLbl.text = pokemon.name.capitalizedString
         mainImg.image = img
@@ -41,12 +38,12 @@ class PokemonDetailsVC: UIViewController {
         pokemon.downloadMoves { 
             
         }
+        
         pokemon.downloadPokeDetails {
             self.updateBioUI()
             
         }
     }
-
 
     func updateBioUI() {
         
@@ -62,6 +59,7 @@ class PokemonDetailsVC: UIViewController {
             nextEvolutionImg.hidden = true
             baseEvolutionImg.hidden = false
             evolutionLbl.text = "NO EVOLUTION"
+            
         } else {
             nextEvolutionImg.hidden = false
             baseEvolutionImg.hidden = false
@@ -89,6 +87,5 @@ class PokemonDetailsVC: UIViewController {
             updateBioUI()
         }
     }
-
 
 }

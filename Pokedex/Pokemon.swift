@@ -139,7 +139,6 @@ class Pokemon {
                         print(self._moves)
                     }
                     
-                    
                 }
             }
         }
@@ -263,5 +262,3 @@ class Pokemon {
         
     }
 }
-
-
