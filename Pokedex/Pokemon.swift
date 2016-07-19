@@ -96,6 +96,7 @@ class Pokemon {
     }
     
     init(name: String, pokeId: Int) {
+        
         self._name = name
         self._pokeId = pokeId
         
@@ -107,6 +108,7 @@ class Pokemon {
         let url = NSURL(string: _pokeURL)!
         
         Alamofire.request(.GET, url).responseJSON { response in
+            
             let result = response.result
             if let dict = result.value as? Dictionary<String, AnyObject> {
                 
@@ -146,6 +148,7 @@ class Pokemon {
                         }
                         
                     }
+                    
                 } else {
                     self._type = ""
                 }

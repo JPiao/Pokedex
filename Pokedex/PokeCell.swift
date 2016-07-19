@@ -12,6 +12,7 @@ class PokeCell: UICollectionViewCell {
     
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var pokeLbl: UILabel!
+    
     var pokemon: Pokemon!
     
     required init?(coder aDecoder: NSCoder) {

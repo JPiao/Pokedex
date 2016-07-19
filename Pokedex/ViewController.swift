@@ -18,7 +18,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var filteredPokemon = [Pokemon]()
     
     var filterMode = false
-    
     var musicPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
@@ -36,6 +35,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func initAudio() {
+        
         let path  = NSBundle.mainBundle().pathForResource("music", ofType: "mp3")! //force unwrap since music file is in our resources
         
         do {
@@ -50,18 +50,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func parsePokeCSV() {
+        
         let path = NSBundle.mainBundle().pathForResource("pokemon", ofType: "csv")!
         
         do {
+            
             let csv = try CSV(contentsOfURL: path)
             let rows = csv.rows
             
             for row in rows {
+                
                 let pokeId = Int(row["id"]!)!
                 let name = row["identifier"]!
                 let poke = Pokemon(name: name, pokeId: pokeId)
                 pokemon.append(poke)
             }
+            
         } catch let err as NSError {
             print (err.debugDescription)
         }
@@ -120,8 +124,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "PokemonDetailsVC" {
+            
             if let detailsVC = segue.destinationViewController as? PokemonDetailsVC {
+                
                 if let pokemon = sender as? Pokemon {
                     detailsVC.pokemon = pokemon
                 }
@@ -130,6 +137,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     @IBAction func btnPress(sender: UIButton!) {
+        
         if musicPlayer.playing {
             musicPlayer.stop()
             sender.alpha = 0.4
@@ -140,11 +148,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
         if searchBar.text == "" || searchBar.text == nil {
+            
             filterMode = false
             view.endEditing(true)
             collectionView.reloadData()
         } else {
+            
             filterMode = true
             let search = searchBar.text!.lowercaseString
             
@@ -158,6 +169,5 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         view.endEditing(true)
     }
     
-
 }
 

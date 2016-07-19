@@ -40,28 +40,27 @@ class PokemonDetailsVC: UIViewController {
         }
     }
 
-        // Do any additional setup after loading the view.
-        func updateUI() {
-            
-            nameLbl.text = pokemon.name
-            pokemonDesc.text = pokemon.pokeDesc
-            typeLbl.text = pokemon.type
-            defenseLbl.text = pokemon.defense
-            heightLbl.text = pokemon.height
-            weightLbl.text = pokemon.weight
-            pokedexID.text = "\(pokemon.pokeId)"
-            attackLbl.text = pokemon.attack
-            
-            if pokemon.nextEvoId == "" {
-                nextEvolutionImg.hidden = true
-                evolutionLbl.text = "NO EVOLUTION"
-            } else {
-                nextEvolutionImg.hidden = false
-                nextEvolutionImg.image = UIImage(named: "\(pokemon.nextEvoId)")
-                evolutionLbl.text = "Next Evolution: \(pokemon.nextEvolutionTxt)"
-            }
-            
+    func updateUI() {
+        
+        nameLbl.text = pokemon.name
+        pokemonDesc.text = pokemon.pokeDesc
+        typeLbl.text = pokemon.type
+        defenseLbl.text = pokemon.defense
+        heightLbl.text = pokemon.height
+        weightLbl.text = pokemon.weight
+        pokedexID.text = "\(pokemon.pokeId)"
+        attackLbl.text = pokemon.attack
+        
+        if pokemon.nextEvoId == "" {
+            nextEvolutionImg.hidden = true
+            evolutionLbl.text = "NO EVOLUTION"
+        } else {
+            nextEvolutionImg.hidden = false
+            nextEvolutionImg.image = UIImage(named: "\(pokemon.nextEvoId)")
+            evolutionLbl.text = "Next Evolution: \(pokemon.nextEvolutionTxt)"
         }
+        
+    }
     
     @IBAction func backBtnPress(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
