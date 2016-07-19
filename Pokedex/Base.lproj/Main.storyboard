@@ -191,6 +191,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
+                                            <action selector="backBtnPress:" destination="Q7n-a5-mzW" eventType="touchUpInside" id="JRW-d6-j2U"/>
                                             <action selector="btnPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uag-yj-VLA"/>
                                         </connections>
                                     </button>

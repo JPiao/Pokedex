@@ -23,8 +23,8 @@ class PokeCell: UICollectionViewCell {
     func configureCell(pokemon: Pokemon) {
         self.pokemon = pokemon
         
-        thumbImg.image = UIImage(named: "\(self.pokemon.pokeId)")
-        pokeLbl.text = self.pokemon.name
+        thumbImg.image = UIImage(named: "\(pokemon.pokeId)")
+        pokeLbl.text = pokemon.name
     }
     
 }
