@@ -31,6 +31,70 @@ class Pokemon {
         return _pokeId
     }
     
+    var pokeDesc: String {
+        if _pokeDesc == nil {
+            _pokeDesc = ""
+        }
+        
+        return _pokeDesc
+    }
+    
+    var type: String {
+        if _type == nil {
+            _type = ""
+        }
+        
+        return _type
+    }
+    
+    var height: String {
+        if _height == nil {
+            _height = ""
+        }
+        
+        return _height
+    }
+    
+    var weight: String {
+        if _weight == nil {
+            _weight = ""
+        }
+        
+        return _weight
+    }
+    
+    var defense: String {
+        if _defense == nil {
+            _defense = ""
+        }
+        
+        return _defense
+    }
+    
+    var attack: String {
+        if _attack == nil {
+            _attack = ""
+        }
+        
+        return _attack
+    }
+    
+    var nextEvolutionTxt: String {
+        if _nextEvolutionTxt == nil {
+            _nextEvolutionTxt = ""
+        }
+        
+        return _nextEvolutionTxt
+    }
+    
+    var nextEvoId: String {
+        if _nextEvoId == nil {
+            _nextEvoId = ""
+        }
+        
+        return _nextEvoId
+    }
+    
     init(name: String, pokeId: Int) {
         self._name = name
         self._pokeId = pokeId
