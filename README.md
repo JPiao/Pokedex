@@ -1,2 +1,2 @@
 #Pokedex
-In depth pokedex in progess
+In depth pokedex of gen 1 pokemon
