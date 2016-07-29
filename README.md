@@ -1,5 +1,5 @@
 #Pokedex
-#In depth pokedex of gen 1 pokemon
+#In depth pokedex of 718 pokemon
 
 #Using Pokeapi.co and Alamofire
 
