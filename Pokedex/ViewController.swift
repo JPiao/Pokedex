@@ -54,7 +54,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let path = NSBundle.mainBundle().pathForResource("pokemon", ofType: "csv")!
         
         do {
-            
             let csv = try CSV(contentsOfURL: path)
             let rows = csv.rows
             
@@ -96,9 +95,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if filterMode {
             return filteredPokemon.count
         }
-        
         return pokemon.count
-        
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -118,9 +115,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             poke = pokemon[indexPath.row]
         }
-        
         performSegueWithIdentifier("PokemonDetailsVC", sender: poke)
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -161,12 +156,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             filteredPokemon = pokemon.filter({$0.name.rangeOfString(search) != nil})
             collectionView.reloadData()
-        }
-        
+        } 
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         view.endEditing(true)
     }
-    
 }
