@@ -5,6 +5,7 @@
 
 import Foundation
 
+//CSV parsing
 public class CSV {
     public var headers: [String] = []
     public var rows: [Dictionary<String, String>] = []
