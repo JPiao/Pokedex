@@ -11,6 +11,7 @@ import Alamofire
 
 class Pokemon {
     
+    //Data encapsulation
     private var _name: String!
     private var _pokeId: Int!
     private var _pokeDesc: String!
@@ -36,7 +37,6 @@ class Pokemon {
         if _pokeDesc == nil {
             _pokeDesc = ""
         }
-        
         return _pokeDesc
     }
     
@@ -44,15 +44,13 @@ class Pokemon {
         if _type == nil {
             _type = ""
         }
-        
         return _type
     }
     
     var height: String {
         if _height == nil {
             _height = ""
-        }
-        
+        } 
         return _height
     }
     
@@ -60,7 +58,6 @@ class Pokemon {
         if _weight == nil {
             _weight = ""
         }
-        
         return _weight
     }
     
@@ -68,7 +65,6 @@ class Pokemon {
         if _defense == nil {
             _defense = ""
         }
-        
         return _defense
     }
     
@@ -76,7 +72,6 @@ class Pokemon {
         if _attack == nil {
             _attack = ""
         }
-        
         return _attack
     }
     
@@ -84,7 +79,6 @@ class Pokemon {
         if _nextEvolutionTxt == nil {
             _nextEvolutionTxt = ""
         }
-        
         return _nextEvolutionTxt
     }
     
@@ -92,7 +86,6 @@ class Pokemon {
         if _nextEvoId == nil {
             _nextEvoId = ""
         }
-        
         return _nextEvoId
     }
     
@@ -104,7 +97,6 @@ class Pokemon {
     }
     
     init(name: String, pokeId: Int) {
-        
         self._name = name
         self._pokeId = pokeId
         
@@ -115,15 +107,13 @@ class Pokemon {
         let url = NSURL(string: _pokeURL)!
         
         Alamofire.request(.GET, url).responseJSON { response in
-            
             var str: String!
             
             let result = response.result
             if let dict = result.value as? Dictionary<String, AnyObject> {
                 if let moves = dict["moves"] as? [Dictionary<String, AnyObject>] where moves.count > 0 {
                     if let move = moves[0]["name"] as? String {
-                        str = move
-                        
+                        str = move    
                     }
                     
                     if moves.count > 1  {
@@ -133,20 +123,15 @@ class Pokemon {
                             let str2 = str1.stringByReplacingOccurrencesOfString("(", withString: "")
                             let str3 = str2.stringByReplacingOccurrencesOfString(")", withString: "")
                             self._moves = str3
-
-
                         }
                         print(self._moves)
                     }
-                    
                 }
             }
         }
-
     }
     
     func downloadPokeDetails(completed: DLComplete) {
-        
         let url = NSURL(string: _pokeURL)!
         
         Alamofire.request(.GET, url).responseJSON { response in
@@ -175,9 +160,6 @@ class Pokemon {
                 print(self._attack)
                 print(self._defense)
                 
-                
-
-                
                 if let types = dict["types"] as? [Dictionary<String, String>] where types.count > 0 {
                     
                     if let name = types[0]["name"] {
@@ -191,7 +173,6 @@ class Pokemon {
                                 self._type! += "/\(name.capitalizedString)"
                             }
                         }
-                        
                     }
                     
                 } else {
@@ -224,7 +205,6 @@ class Pokemon {
                     self._pokeDesc = ""
                 }
                 
-                
                 if let evolutions = dict["evolutions"] as? [Dictionary<String,AnyObject>] where evolutions.count > 0 {
                     
                     if let to = evolutions[0]["to"] as? String {
@@ -242,23 +222,14 @@ class Pokemon {
                                 self._nextEvoId = num
                                 self._nextEvolutionTxt = to
                                 
-                                
                                 print(self._nextEvoId)
                                 print(self._nextEvolutionTxt)
-            
-                                
+             
                             }
-                        }
-                        
-                    }
-                    
-                    
+                        } 
+                    }      
                 }
-
-                
-            }
-            
-        }
-        
+            }  
+        } 
     }
 }
