@@ -11,4 +11,5 @@ import Foundation
 let URL_BASE = "http://pokeapi.co"
 let POKE_URL = "/api/v1/pokemon/"
 
+//Will use this for closures for asynchronous calls
 typealias DLComplete = () -> ()
