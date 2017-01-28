@@ -36,12 +36,11 @@ class PokemonDetailsVC: UIViewController {
         baseEvolutionImg.image = img
         
         pokemon.downloadMoves { 
-            
+            //empty call for closure
         }
         
         pokemon.downloadPokeDetails {
-            self.updateBioUI()
-            
+            self.updateBioUI() 
         }
     }
 
@@ -66,7 +65,6 @@ class PokemonDetailsVC: UIViewController {
             nextEvolutionImg.image = UIImage(named: "\(pokemon.nextEvoId)")
             evolutionLbl.text = "Next Evolution: \(pokemon.nextEvolutionTxt)"
         }
-        
     }
     
     @IBAction func backBtnPress(sender: AnyObject) {
@@ -81,11 +79,9 @@ class PokemonDetailsVC: UIViewController {
             movesLbl.hidden = false
             movesLbl.text = pokemon.moves
         }
-            
         else {
             movesLbl.hidden = true
             updateBioUI()
         }
     }
-
 }
